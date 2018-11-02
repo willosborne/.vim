@@ -19,7 +19,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
 Plug 'flazz/vim-colorschemes'
 " Plug 'rafi/awesome-vim-colorschemes'
-
+Plug 'valloric/youcompleteme'
 Plug 'mbbill/undotree'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
@@ -31,11 +31,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-endwise'
-
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
+Plug 'townk/vim-autoclose'
 let g:polyglot_disabled = ['lua']
-
-Plug 'marcusf/vim-lua'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'kien/rainbow_parentheses.vim'
 
 call plug#end()
 "undotree
@@ -62,6 +65,7 @@ nnoremap <leader>q :q<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader><space> :noh<CR>
+nnoremap \t :NERDTreeToggle<CR>
 
 nmap <C-e> :b#<CR>
 nmap <C-n> :bn<CR>

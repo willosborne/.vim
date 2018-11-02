@@ -19,7 +19,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
 Plug 'flazz/vim-colorschemes'
 " Plug 'rafi/awesome-vim-colorschemes'
-
+Plug 'valloric/youcompleteme'
 Plug 'mbbill/undotree'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
@@ -31,9 +31,17 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-endwise'
-
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['lua']
+" Plug 'townk/vim-autoclose'
+let g:polyglot_disabled = ['lua', 'haskell']
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 "undotree
@@ -46,6 +54,8 @@ endif
 
 "backup 
 set backup
+set backupdir=~/.vim/tmp,.
+set directory=~/.vim/tmp,.
 
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
@@ -60,6 +70,7 @@ nnoremap <leader>q :q<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader><space> :noh<CR>
+nnoremap \t :NERDTreeToggle<CR>
 
 nmap <C-e> :b#<CR>
 nmap <C-n> :bn<CR>
@@ -69,8 +80,14 @@ nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
 "####### COLOURS ############
+
+set t_Co=256
+set t_ut=
+
 set background=dark
-colorscheme badwolf
+" colorscheme gruvbox
+colorscheme molokai
+" colorscheme badwolf
 
 " syntax enable
 
@@ -80,11 +97,11 @@ colorscheme badwolf
 set mouse=a
 
 "set foldenable
-set foldlevelstart=10 "open 10 levels of fold at file open
+set foldlevelstart=20 "open 10 levels of fold at file open
 
 "open/close folds
 nnoremap <space> za
-set foldmethod=indent
+set foldmethod=syntax 
 
 "set history=1000
 
@@ -118,3 +135,16 @@ endfunction
 
 command! ProseMode call ProseMode()
 nmap \p :ProseMode<CR>
+
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+
+"" ###### CLOJURE #####
+nmap <leader>e :Eval<CR>
+nmap <leader>E :%Eval<CR>
+" autocmd BufRead, BufNewFile *.clj :RainbowParenthesesActivate<CR>
+au VimEnter *.clj RainbowParenthesesToggle
+au Syntax *.clj RainbowParenthesesLoadRound
+au Syntax *.clj RainbowParenthesesLoadSquare
+au Syntax *.clj RainbowParenthesesLoadBraces
